@@ -1,6 +1,7 @@
 .idea/*
 *.pyc
 *.pyo
+*.sqlite
 *.sqlite3
 __pycache__
 staticfiles
