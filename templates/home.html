@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>In-Book Search Pro</title>
 </head>
 <body>
-
+    <form method="POST">
+        {% csrf_token %}
+        <input name="query" id="id_query" type="text" placeholder="What we will search in books?">
+        <input name="email" id="id_email" type="email" placeholder="Your e-mail for search results">
+        <input type="submit" value="Search">
+    </form>
 </body>
 </html>

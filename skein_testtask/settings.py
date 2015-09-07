@@ -36,7 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'book_store',
     'book_search',
+    'kombu.transport.django',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,3 +103,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BROKER_URL = 'django://'
+
+CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
