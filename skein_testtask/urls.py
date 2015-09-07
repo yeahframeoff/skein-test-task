@@ -13,10 +13,12 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf import settings
+from django.conf.urls import url
+from django.conf.urls.static import static
 from book_search import views
 
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home_page'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

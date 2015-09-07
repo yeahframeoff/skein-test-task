@@ -73,9 +73,16 @@ def make_email(search_result, time, original_query):
 
 @celery_app.task
 def process_query_and_email(query, email, time):
+    # to demonstrate that search can last
+    # for big amount of time, we make a 5-second delay
+    from time import sleep
+    sleep(5)
     query_parts = decompose_query(query)
     books_qs = fetch_books(query_parts)
     search_result = digest_searchresult(books_qs)
     subject, content = make_email(search_result, time, query)
-    send_mail(subject, content, 'search-results@inbook-search-pro.com',
-              [email], fail_silently=False)
+    return send_mail(subject,
+                     content,
+                     'search-results@inbook-search-pro.com',
+                     [email],
+                     fail_silently=False)

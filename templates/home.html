@@ -3,13 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>In-Book Search Pro</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <style>
+        .vertical-center {
+            min-height: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        <input name="query" id="id_query" type="text" placeholder="What we will search in books?">
-        <input name="email" id="id_email" type="email" placeholder="Your e-mail for search results">
-        <input type="submit" value="Search">
-    </form>
+<div class="jumbotron vertical-center">
+    <div class="container-fluid col-xs-10 col-sm-9 col-md-7 col-lg-5">
+        <form method="POST">
+            {% csrf_token %}
+            {% if success %}
+            <div class="alert alert-success" role="alert">
+                <strong>Congratulations!</strong> The system is now
+                searching books for request <strong>"{{ query }}"</strong>.<br>
+                When it is ready, it will be sent to <strong>your</strong>
+                email <em>{{ email }}</em>
+            </div>
+            {% endif %}
+            <input class="form-control"
+                   name="query" id="id_query"
+                   type="text" placeholder="What we will search in books?">
+            <input class="form-control"
+                   name="email" id="id_email"
+                   type="email" placeholder="Your e-mail for search results">
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Search">
+        </form>
+    </div>
+</div>
 </body>
 </html>
