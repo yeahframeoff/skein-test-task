@@ -21,7 +21,7 @@
 4.  Применяем миграции и импортируем данные:
 
         (yefremov)$ python manage.py migrate
-        (yefremov)$ python manage.py loaddata "book_store.book_data.json"
+        (yefremov)$ python manage.py loaddata "book_store/book_data.json"
 
 5.  Запускаем сервер:
 
