@@ -11,7 +11,7 @@ tolkien = Author.objects.create(name='John',
 hobbit_book = Book.objects.create(title='The Hobbit',
                                   author=tolkien)
 
-with open('hobbit.txt') as f:
+with open('book_import/hobbit.txt') as f:
     text = f.readlines()
 text = '\n'.join(text)
 text = re.sub('\n+', '\n', text)

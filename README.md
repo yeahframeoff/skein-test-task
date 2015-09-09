@@ -61,6 +61,6 @@
 
     (yefremov)$ python manage.py shell
     ...
-    >>> execfile('hobbit_to_fixture.py')
+    >>> exec('book_import/hobbit_to_fixture.py')
     ...
     >>> exit()
